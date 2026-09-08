@@ -48,7 +48,7 @@ class _SebhaState extends State<Sebha> with SingleTickerProviderStateMixin {
         praisesNum = 0;
         if (currentPageIndex < praises.length - 1) {
           _praisesController.nextPage(
-            duration: Duration(milliseconds: 300),
+            duration: Duration(milliseconds: 150),
             curve: Curves.easeInOut,
           );
         } else {
@@ -119,7 +119,7 @@ class _SebhaState extends State<Sebha> with SingleTickerProviderStateMixin {
                                 praisesController();
                               },
                               style: TextButton.styleFrom(
-                                overlayColor: ColorsManager.gold,
+                                overlayColor: ColorsManager.white,
                               ),
                               child: Text(
                                 "$praisesNum",
