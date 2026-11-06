@@ -13,6 +13,12 @@ class ImageAssets {
   static const String sebhaBg = "${base}Sebhe_bg.png";
   static const String sebhaBody = "${base}SebhaBody 1.png";
   static const String sebhaHead = "${base}sebha's_head.png";
+  static const String hadithTabBg = "${base}hadith_tab_bg.png";
+  static const String onboardingPage1 = "${base}onboardingPage1.png";
+  static const String onboardingPage2 = "${base}onboardingPage2.png";
+  static const String onboardingPage3 = "${base}onboardingPage3.png";
+  static const String onboardingPage4 = "${base}onboardingPage4.png";
+  static const String onboardingPage5 = "${base}onboardingPage5.png";
 }
 
 class IconAssets {

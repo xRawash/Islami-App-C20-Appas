@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quran_app_abbas/core/extensions/context_ex.dart';
 import 'package:quran_app_abbas/core/sources/assets_manager.dart';
 import 'package:quran_app_abbas/core/sources/colors_manager.dart';
-import 'package:quran_app_abbas/features/main_layout/tabs/quran/widgets/most_recent_item.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/quran/widgets/most_recent_list.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/quran/widgets/sura_item.dart';
 import 'package:quran_app_abbas/models/sura_model.dart';
@@ -19,8 +18,6 @@ class QuranState extends State<Quran> {
 
   @override
   Widget build(BuildContext context) {
-    print("Entering quran tab build nwww");
-
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(image: AssetImage(ImageAssets.quranTabBg)),
@@ -51,9 +48,8 @@ class QuranState extends State<Quran> {
              itemBuilder: (context, index)=>SuraItem(
               sura: filteredList[index],
                refreshQuranTab: refreshQuranTab,
-
-
              ),
+             padding: EdgeInsets.symmetric( horizontal: 8),
              separatorBuilder: (context, index)=>Container(
                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                width: double.infinity,

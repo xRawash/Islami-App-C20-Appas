@@ -33,7 +33,7 @@ class HadithDetailsScreen extends StatelessWidget {
             ),
 
             Expanded(
-              child: Text(hadith.content, style: TextStyle(fontSize: 22, color: ColorsManager.gold),)
+              child: Text(hadith.content, style: TextStyle(fontSize: 22, color: ColorsManager.gold),textDirection: TextDirection.rtl,)
             ),
           ],
         ),

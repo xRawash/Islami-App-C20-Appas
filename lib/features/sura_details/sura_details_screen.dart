@@ -2,90 +2,94 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_app_abbas/core/sources/assets_manager.dart';
 import 'package:quran_app_abbas/core/sources/colors_manager.dart';
-import 'package:quran_app_abbas/features/sura_details/widget/werse_)item.dart';
+import 'package:quran_app_abbas/features/sura_details/widget/verse_item.dart';
 import 'package:quran_app_abbas/models/sura_model.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
+  const SuraDetailsScreen({super.key});
+
   @override
   State<SuraDetailsScreen> createState() => _SuraDetailsScreenState();
 }
 
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   late SuraModel sura;
-  List<String> verses = [];
+  List<String> suraVerses = [];
+
+  Future<void> loadSuraVerses(String index) async {
+    String key = "assets/files/suras/$index.txt";
+    String suraContent = await rootBundle.loadString(key);
+    List<String> suraLines = suraContent.split('\n');
+    List<String> loadedVerses = [];
+    for (int i = 0; i < suraLines.length; i++) {
+      String line = suraLines[i].trim();
+      if (line.isNotEmpty) {
+        loadedVerses.add("$line ﴿${i + 1}﴾");
+      }
+    }
+    if (mounted) {
+      setState(() {
+        suraVerses = loadedVerses;
+      });
+    }
+  }
 
   @override
   void didChangeDependencies() {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
     sura = ModalRoute.of(context)!.settings.arguments as SuraModel;
-    loadSura(sura.suraIndex);
-  }
-  
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    super.dispose();
-
+    if (suraVerses.isEmpty) {
+      loadSuraVerses(sura.suraIndex);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(sura.suraNameEn)),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(14.0),
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                Image.asset(ImageAssets.imgLeftCorner),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset(ImageAssets.imgLeftCorner),
+                    Image.asset(ImageAssets.imgRightCorner),
+                  ],
+                ),
                 Text(
                   sura.suraNameAr,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: ColorsManager.gold,
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-
-                Image.asset(ImageAssets.imgRightCorner),
               ],
             ),
-
-            Expanded(
-              child: verses.isEmpty
-                  ? Center(
-                      child: CircularProgressIndicator(
-                        color: ColorsManager.gold,
-                      ),
-                    )
-                  : ListView.builder(
-                      itemBuilder: (context, index) =>
-                          VerseItem(verse: verses[index]),
-                      itemCount: verses.length,
+          ),
+          Expanded(
+            child: suraVerses.isEmpty
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: ColorsManager.gold,
                     ),
-            ),
-          ],
-        ),
+                  )
+                : ListView.builder(
+                    itemCount: suraVerses.length,
+                    itemBuilder: (context, index) => VerseItem(
+                      verse: suraVerses[index],
+                    ),
+                  ),
+          ),
+          Image.asset(ImageAssets.imgBottomDecoration),
+        ],
       ),
     );
   }
-
-  void loadSura(String index) async {
-    String key = "assets/files/suras/${index}.txt";
-
-    String fileContent = await rootBundle.loadString(key);
-
-
-
-    List<String> suraLines = fileContent.trim().split('\n');
-    for (int i = 0; i < suraLines.length; i++) {
-      suraLines[i] += "[${i + 1}]";
-    }
-    verses = suraLines;
-    await Future.delayed(Duration(milliseconds: 500));
-    setState(() {});
-  }
 }
+

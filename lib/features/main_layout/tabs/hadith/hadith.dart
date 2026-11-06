@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:quran_app_abbas/core/extensions/context_ex.dart';
 import 'package:quran_app_abbas/core/sources/assets_manager.dart';
-import 'package:quran_app_abbas/core/sources/colors_manager.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/hadith/widgets/hadith_item.dart';
 
 class Hadith extends StatelessWidget {
@@ -19,23 +19,21 @@ class Hadith extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Image.asset(ImageAssets.islamiLogo),
-          CarouselSlider(
-            options: CarouselOptions(
-
-              height: 600.0,
-              viewportFraction: 0.7,
-              enlargeFactor: 0.2,
-          //   enableInfiniteScroll: false,
-
-              enlargeCenterPage: true,
-              //autoPlayAnimationDuration: Duration(milliseconds: 300),
+          Expanded(
+            child: CarouselSlider(
+              options: CarouselOptions(
+                height: context.getWidth,
+                viewportFraction: 0.7,
+                enlargeFactor: 0.2,
+                enableInfiniteScroll: false,
+                enlargeCenterPage: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 300),
+              ),
+              items: List.generate(50, (index) => index+1).map((index) {
+                return HadithItem(index: index,);
+              }).toList(),
             ),
-            items: List.generate(50, (index) => index+1).map((index) {
-              return HadithItem(index: index,);
-            }).toList(),
           )
-
-
         ],
       ),
     );

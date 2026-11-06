@@ -7,8 +7,8 @@ import 'package:quran_app_abbas/features/main_layout/tabs/quran/widgets/most_rec
 import 'package:quran_app_abbas/models/sura_model.dart';
 
 class MostRecentList extends StatefulWidget {
-  MostRecentList({super.key, required this.refreshQuranTab});
-  void Function() refreshQuranTab;
+  const MostRecentList({super.key, required this.refreshQuranTab});
+  final void Function() refreshQuranTab;
   @override
   State<MostRecentList> createState() => MostRecentListState();
 }
@@ -24,15 +24,11 @@ void fillMostRecentSuras()async{
 }
 @override
   void initState() {
-  print("Ana da5alt el init state bt3t el most recent");
     super.initState();
     fillMostRecentSuras();
   }
   @override
   void didUpdateWidget(covariant MostRecentList oldWidget) {
-    print("Ana da5alt el did update bt3t el most recent");
-
-    // TODO: implement didUpdateWidget
     super.didUpdateWidget(oldWidget);
     fillMostRecentSuras();
   }

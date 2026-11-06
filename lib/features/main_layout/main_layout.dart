@@ -9,6 +9,8 @@ import 'package:quran_app_abbas/features/main_layout/tabs/time/time.dart';
 import 'tabs/quran/quran.dart';
 
 class MainLayout extends StatefulWidget {
+  const MainLayout({super.key});
+
   @override
   State<MainLayout> createState() => _MainLayoutState();
 }

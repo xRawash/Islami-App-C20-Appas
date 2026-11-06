@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:quran_app_abbas/config/theme/theme_manager.dart';
+import 'package:quran_app_abbas/core/prefs_manager/prefs_manager.dart';
 import 'package:quran_app_abbas/core/sources/routes_manager.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final isFinishedOnboarding = prefs.getBool('is finished onboarding') ?? false;
+  await PrefsManager.init();
+  final isFinishedOnboarding = await PrefsManager.getOnboardingStatus();
   runApp(Islami(isFinishedOnboarding: isFinishedOnboarding));
 }
 
