@@ -3,7 +3,7 @@ import 'package:quran_app_abbas/core/sources/assets_manager.dart';
 import 'package:quran_app_abbas/core/sources/colors_manager.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/hadith/hadith.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/sebha/sebha.dart';
-import 'package:quran_app_abbas/features/main_layout/tabs/radio/radio.dart' as MyRadio;
+import 'package:quran_app_abbas/features/main_layout/tabs/radio/radio.dart' as myRadio;
 import 'package:quran_app_abbas/features/main_layout/tabs/time/time.dart';
 
 import 'tabs/quran/quran.dart';
@@ -20,7 +20,7 @@ class _MainLayoutState extends State<MainLayout> {
     Quran(),
     Hadith(),
     Sebha(),
-    MyRadio.Radio(),
+    myRadio.Radio(),
     Time()
 
   ];

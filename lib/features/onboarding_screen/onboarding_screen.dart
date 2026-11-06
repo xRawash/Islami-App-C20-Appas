@@ -4,7 +4,6 @@ import 'package:quran_app_abbas/core/sources/assets_manager.dart';
 import 'package:quran_app_abbas/core/sources/colors_manager.dart';
 import 'package:quran_app_abbas/core/sources/routes_manager.dart';
 import 'package:quran_app_abbas/models/onboarding_model.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {

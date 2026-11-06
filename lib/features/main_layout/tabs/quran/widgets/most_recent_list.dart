@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:quran_app_abbas/core/extensions/context_ex.dart';
