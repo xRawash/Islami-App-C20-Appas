@@ -5,7 +5,6 @@ import 'package:quran_app_abbas/core/sources/colors_manager.dart';
 import 'package:quran_app_abbas/core/sources/routes_manager.dart';
 import 'package:quran_app_abbas/features/main_layout/tabs/time/helpers/time_helper.dart';
 import 'package:quran_app_abbas/models/azkar_model.dart';
-import 'package:quran_app_abbas/models/prayer_item.dart';
 import 'package:quran_app_abbas/models/prayer_times_model.dart';
 
 class Time extends StatefulWidget {
@@ -59,70 +58,64 @@ class _TimeState extends State<Time> {
                   child: Center(child: Image.asset(ImageAssets.islamiLogo)),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  padding: const EdgeInsets.symmetric(vertical: 24),
                   decoration: BoxDecoration(
                     color: ColorsManager.gold,
                     borderRadius: BorderRadius.circular(40),
                   ),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  child: isLoading
+                      ? const SizedBox(
+                          height: 180,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.black,
+                            ),
+                          ),
+                        )
+                      : Column(
                           children: [
-                            Expanded(
-                              child: Text(
-                                prayerTimes?.gregorianDate ?? "Error loading date",
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      prayerTimes?.gregorianDate ?? "",
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      "Pray Time\n${prayerTimes?.weekday ?? ""}",
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Text(
+                                      prayerTimes?.hijriDate ?? "",
+                                      textAlign: TextAlign.end,
+                                      style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            Expanded(
-                              child: Text(
-                                "Pray Time\n${prayerTimes?.weekday ?? "Error loading day"}",
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Text(
-                                prayerTimes?.hijriDate ?? "Error loading date",
-                                textAlign: TextAlign.end,
-                                style: const TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      isLoading
-                          ? const SizedBox(
-                              height: 140,
-                              child: Center(
-                                child: CircularProgressIndicator(
-                                  color: ColorsManager.black,
-                                ),
-                              ),
-                            )
-                          : CarouselSlider.builder(
+                            const SizedBox(height: 16),
+                            CarouselSlider.builder(
                               itemCount: prayerTimes?.prayers.length ?? 6,
                               itemBuilder: (context, index, realIndex) {
-                                final prayer = prayerTimes != null
-                                    ? prayerTimes!.prayers[index]
-                                    : PrayerItem(
-                                        name: "ASR",
-                                        time: "04:38",
-                                        period: "PM",
-                                      );
+                                final prayer = prayerTimes!.prayers[index];
 
                                 return Container(
                                   width: 104,
@@ -191,8 +184,8 @@ class _TimeState extends State<Time> {
                                 ),
                               ),
                             ),
-                    ],
-                  ),
+                          ],
+                        ),
                 ),
                 const SizedBox(height: 20),
                 const Text(
