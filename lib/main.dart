@@ -22,7 +22,7 @@ class Islami extends StatelessWidget {
       theme: ThemeManager.light,
       darkTheme: ThemeManager.dark,
       themeMode: ThemeMode.system,
-      routes: RoutesManager.routes,
+      onGenerateRoute: RoutesManager.onGenerateRoute,
       initialRoute: isFinishedOnboarding
           ? RoutesManager.mainLayout
           : RoutesManager.onboardingScreen,

@@ -18,6 +18,8 @@ final void Function() refreshQuranTab;
       refreshQuranTab();
         },
       child: Container(
+        width: 283,
+        height: 150,
         padding: EdgeInsets.symmetric(vertical: 12, horizontal: 17),
         decoration: BoxDecoration(
           color: ColorsManager.gold,
