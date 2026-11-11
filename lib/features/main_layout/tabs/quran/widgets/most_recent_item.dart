@@ -29,9 +29,9 @@ final void Function() refreshQuranTab;
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(sura.suraNameEn, style: Theme.of(context).textTheme.labelLarge,),
-                Text(sura.suraNameAr,style: Theme.of(context).textTheme.labelLarge,),
-                Text(sura.versesNum,style: Theme.of(context).textTheme.labelSmall,),
+                Expanded(child: Text(sura.suraNameEn, style: Theme.of(context).textTheme.labelLarge,)),
+                Expanded(child: Text(sura.suraNameAr,style: Theme.of(context).textTheme.labelLarge,)),
+                Expanded(child: Text(sura.versesNum,style: Theme.of(context).textTheme.labelSmall,)),
               ],
             ),
             Image.asset(ImageAssets.mostRecentCardImage)

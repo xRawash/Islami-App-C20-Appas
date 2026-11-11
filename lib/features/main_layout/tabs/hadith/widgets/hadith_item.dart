@@ -31,7 +31,7 @@ class _HadithItemState extends State<HadithItem> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushReplacementNamed(
+        Navigator.pushNamed(
           context,
           RoutesManager.hadithDetailsScreen,
           arguments: hadith,

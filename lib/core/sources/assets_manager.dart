@@ -19,6 +19,15 @@ class ImageAssets {
   static const String onboardingPage3 = "${base}onboardingPage3.png";
   static const String onboardingPage4 = "${base}onboardingPage4.png";
   static const String onboardingPage5 = "${base}onboardingPage5.png";
+  static const String timeBg = "${base}time_bg.png";
+  static const String eveningAzkarBg = "${base}evening_azkar_bg.png";
+  static const String morningAzkarBg = "${base}morning_azkar_bg.png";
+  static const String wakingAzkarBg = "${base}waking_azkar_bg.png";
+  static const String sleepingAzkarBg = "${base}sleeping_azkar_bg.png";
+  static const String afterPrayersAzkar = "${base}afterPrayersAzkar.png";
+  static const String quranPrayers = "${base}quranPrayers.png";
+  static const String prophetsAzkar = "${base}prophetsAzkar.png";
+  static const String tsabeeh = "${base}tsabeeh.png";
 }
 
 class IconAssets {

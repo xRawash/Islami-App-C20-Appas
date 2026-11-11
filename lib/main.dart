@@ -21,7 +21,7 @@ class Islami extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeManager.light,
       darkTheme: ThemeManager.dark,
-      themeMode: ThemeMode.light,
+      themeMode: ThemeMode.system,
       routes: RoutesManager.routes,
       initialRoute: isFinishedOnboarding
           ? RoutesManager.mainLayout
